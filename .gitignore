@@ -1,0 +1,40 @@
+# Claude Code
+.serena/
+CLAUDE.md
+.mcp.json
+.claude/
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+
+# Environment
+.env
+.venv
+env/
+venv/
+ENV/
+
+# Data
+data/uploads/
+
+# Output
+outputs/reports/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+logs/
