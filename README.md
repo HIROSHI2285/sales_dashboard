@@ -10,10 +10,6 @@
 
 ## 📐 システム概要
 
-![System Overview](docs/images/system_overview.png)
-
-*システム全体のアーキテクチャと処理フローを示す概要図*
-
 ### データフロー
 ```
 CSV入力 → データ処理 → 可視化・分析 → レポート出力
@@ -72,10 +68,6 @@ CSV入力 → データ処理 → 可視化・分析 → レポート出力
 ![PDF Report Sample](docs/images/pdf_report_sample.png)
 *モダンなデザインの自動生成レポート*
 
-**画像配置方法:**
-- スクリーンショットを `docs/images/` フォルダに保存
-- ファイル名: `dashboard.png`, `data_view.png`, `prediction.png`, `pdf_generation.png`, `pdf_report_sample.png`, `system_overview.png`
-- 推奨サイズ: 幅1200px以上（高解像度）
 
 ---
 
