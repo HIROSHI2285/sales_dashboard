@@ -300,7 +300,5 @@ SOFTWARE.
 
 ---
 
-## 📧 お問い合わせ
 
-バグ報告や機能リクエストは [Issues](https://github.com/your-repo/sales_dashboard/issues) にお願いします。
 
