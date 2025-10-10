@@ -3,6 +3,7 @@
 CLAUDE.md
 .mcp.json
 .claude/
+webアプリ開発手順.md
 
 # Python
 __pycache__/
@@ -23,6 +24,8 @@ data/uploads/
 
 # Output
 outputs/reports/
+*.pdf
+temp_chart_*.png
 
 # IDE
 .vscode/
@@ -38,3 +41,25 @@ Thumbs.db
 # Logs
 *.log
 logs/
+
+# Backup files
+*_backup.py
+*_old.py
+app_backup*.py
+
+# Temporary files
+nul
+*.lnk
+
+# Screenshots (except docs/images/)
+*.png
+*.jpg
+*.jpeg
+!docs/images/*.png
+!docs/images/*.jpg
+!docs/images/*.jpeg
+!assets/*.png
+!assets/*.jpg
+
+# Playwright MCP
+.playwright-mcp/

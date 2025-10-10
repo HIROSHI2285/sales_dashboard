@@ -1,0 +1,432 @@
+/* Modern Sales Dashboard CSS - Clean & Simple */
+
+/* Google Fonts - Material Icons */
+@import url('https://fonts.googleapis.com/icon?family=Material+Icons');
+
+/* Material Icons フォント設定 */
+.material-icons {
+    font-family: 'Material Icons' !important;
+    font-weight: normal !important;
+    font-style: normal !important;
+    font-size: 24px !important;
+    display: inline-block !important;
+    line-height: 1 !important;
+    text-transform: none !important;
+    letter-spacing: normal !important;
+    word-wrap: normal !important;
+    white-space: nowrap !important;
+    direction: ltr !important;
+}
+
+/* グローバルフォント - Noto Sans CJK JP Medium */
+*:not(.material-icons) {
+    font-family: 'Noto Sans CJK JP', 'Noto Sans JP', 'Hiragino Sans', 'Meiryo', sans-serif !important;
+}
+
+/* メインコンテナ */
+.main {
+    background: #ffffff;
+    padding: 2rem !important;
+}
+
+/* サイドバーが表示されている時のメインコンテンツ */
+.main .block-container {
+    max-width: none !important;
+    padding: 2rem 3rem !important;
+}
+
+/* 背景 */
+.stApp {
+    background: #F9F9F9;
+}
+
+/* タイトル */
+h1 {
+    color: #2B3D4F !important;
+    font-weight: 500 !important;
+    letter-spacing: 0px !important;
+    font-size: 1.8rem !important;
+    margin-bottom: 1rem !important;
+}
+
+/* サブヘッダー */
+h2 {
+    color: #2B3D4F !important;
+    font-weight: 500 !important;
+    font-size: 1.3rem !important;
+    margin-top: 1.5rem !important;
+}
+
+h3 {
+    color: #2B3D4F !important;
+    font-weight: 500 !important;
+    font-size: 1.1rem !important;
+}
+
+/* サイドバー - デザインサンプル準拠（固定解除） */
+section[data-testid="stSidebar"] {
+    background: #2B3D4F !important;
+    border-right: none !important;
+}
+
+section[data-testid="stSidebar"] > div {
+    background: #2B3D4F !important;
+}
+
+section[data-testid="stSidebar"] .block-container {
+    padding-top: 1.5rem !important;
+}
+
+/* サイドバーのテキスト */
+section[data-testid="stSidebar"] * {
+    color: #ecf0f1 !important;
+}
+
+/* サイドバーのラジオボタンスタイル */
+section[data-testid="stSidebar"] .stRadio > div {
+    gap: 0.3rem !important;
+}
+
+section[data-testid="stSidebar"] .stRadio > div > label {
+    background: transparent !important;
+    padding: 1rem 1rem 1rem 4rem !important;
+    margin: 0 !important;
+    border-radius: 0 !important;
+    cursor: pointer !important;
+    transition: background 0.2s ease !important;
+    position: relative !important;
+    color: #ECF0F1 !important;
+    font-size: 1rem !important;
+    font-weight: 400 !important;
+}
+
+section[data-testid="stSidebar"] .stRadio > div > label:hover {
+    background: rgba(255, 255, 255, 0.05) !important;
+}
+
+/* ラジオボタンの丸を非表示 */
+section[data-testid="stSidebar"] .stRadio > div > label > div:first-child {
+    display: none !important;
+}
+
+/* ラジオボタンの各項目にアイコンを追加 */
+section[data-testid="stSidebar"] .stRadio > div > label:nth-of-type(1)::before {
+    content: '\e2c6';  /* upload - データアップロード */
+    font-family: 'Material Icons';
+    position: absolute;
+    left: 1.2rem;
+    font-size: 24px;
+    color: #ECF0F1;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+section[data-testid="stSidebar"] .stRadio > div > label:nth-of-type(2)::before {
+    content: '\e871';  /* dashboard - ダッシュボード */
+    font-family: 'Material Icons';
+    position: absolute;
+    left: 1.2rem;
+    font-size: 24px;
+    color: #ECF0F1;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+section[data-testid="stSidebar"] .stRadio > div > label:nth-of-type(3)::before {
+    content: '\e85d';  /* assignment_turned_in - 売上予測 */
+    font-family: 'Material Icons';
+    position: absolute;
+    left: 1.2rem;
+    font-size: 24px;
+    color: #ECF0F1;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+section[data-testid="stSidebar"] .stRadio > div > label:nth-of-type(4)::before {
+    content: '\e873';  /* description - レポート生成 */
+    font-family: 'Material Icons';
+    position: absolute;
+    left: 1.2rem;
+    font-size: 24px;
+    color: #ECF0F1;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+section[data-testid="stSidebar"] .stRadio > div > label:nth-of-type(5)::before {
+    content: '\e8ef';  /* view_list - データ確認 */
+    font-family: 'Material Icons';
+    position: absolute;
+    left: 1.2rem;
+    font-size: 24px;
+    color: #ECF0F1;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+/* ボタンスタイル */
+.stButton > button {
+    border-radius: 8px !important;
+    font-weight: 500 !important;
+    padding: 0.5rem 1rem !important;
+    transition: all 0.3s ease !important;
+    border: none !important;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1) !important;
+}
+
+.stButton > button:hover {
+    transform: translateY(-2px) !important;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15) !important;
+}
+
+/* プライマリボタン */
+.stButton > button[kind="primary"] {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%) !important;
+    color: white !important;
+}
+
+.stButton > button[kind="primary"]:hover {
+    background: linear-gradient(135deg, #764ba2 0%, #667eea 100%) !important;
+}
+
+/* メトリックカード - デザインサンプル準拠 */
+div[data-testid="stMetricValue"] {
+    font-size: 1.8rem !important;
+    font-weight: 400 !important;
+    color: #2B3D4F !important;
+    letter-spacing: 0px !important;
+    word-break: break-all !important;
+    overflow-wrap: break-word !important;
+}
+
+div[data-testid="stMetricLabel"] {
+    font-size: 0.75rem !important;
+    font-weight: 400 !important;
+    color: #6B7280 !important;
+    text-transform: none !important;
+    letter-spacing: 0px !important;
+}
+
+div[data-testid="metric-container"] {
+    background: #ffffff !important;
+    padding: 1.2rem 1rem !important;
+    border-radius: 8px !important;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.06) !important;
+    transition: all 0.2s ease !important;
+    border: 1px solid #E5E7EB !important;
+    min-height: 110px !important;
+}
+
+div[data-testid="metric-container"]:hover {
+    transform: translateY(-1px) !important;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1) !important;
+    border-color: #D1D5DB !important;
+}
+
+div[data-testid="stMetricDelta"] svg {
+    fill: #48bb78 !important;
+}
+
+div[data-testid="stMetricDelta"][data-test-negative="true"] svg {
+    fill: #f56565 !important;
+}
+
+/* タブスタイル */
+.stTabs [data-baseweb="tab-list"] {
+    gap: 8px;
+    background-color: transparent;
+}
+
+.stTabs [data-baseweb="tab"] {
+    height: 50px;
+    background-color: white;
+    border-radius: 8px 8px 0 0;
+    color: #7f8c8d;
+    font-weight: 500;
+    padding: 0 24px;
+    border: 1px solid #e1e8ed;
+    border-bottom: none;
+}
+
+.stTabs [aria-selected="true"] {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white !important;
+    border-color: transparent;
+}
+
+/* インプットフィールド */
+.stTextInput > div > div > input,
+.stNumberInput > div > div > input,
+.stSelectbox > div > div > div,
+.stMultiSelect > div > div > div {
+    border-radius: 8px !important;
+    border: 1px solid #e1e8ed !important;
+    padding: 0.5rem 1rem !important;
+}
+
+.stTextInput > div > div > input:focus,
+.stNumberInput > div > div > input:focus {
+    border-color: #667eea !important;
+    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1) !important;
+}
+
+/* データフレーム */
+.dataframe {
+    border-radius: 8px !important;
+    overflow: hidden !important;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08) !important;
+}
+
+/* 成功メッセージ */
+.stSuccess {
+    background-color: #d4edda !important;
+    border-left: 4px solid #28a745 !important;
+    border-radius: 8px !important;
+    padding: 1rem !important;
+}
+
+/* エラーメッセージ */
+.stError {
+    background-color: #f8d7da !important;
+    border-left: 4px solid #dc3545 !important;
+    border-radius: 8px !important;
+    padding: 1rem !important;
+}
+
+/* 警告メッセージ */
+.stWarning {
+    background-color: #fff3cd !important;
+    border-left: 4px solid #ffc107 !important;
+    border-radius: 8px !important;
+    padding: 1rem !important;
+}
+
+/* 情報メッセージ */
+.stInfo {
+    background-color: #d1ecf1 !important;
+    border-left: 4px solid #17a2b8 !important;
+    border-radius: 8px !important;
+    padding: 1rem !important;
+}
+
+/* ダウンロードボタン */
+.stDownloadButton > button {
+    background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%) !important;
+    color: white !important;
+}
+
+.stDownloadButton > button:hover {
+    background: linear-gradient(135deg, #38ef7d 0%, #11998e 100%) !important;
+}
+
+/* Expanderスタイル */
+.streamlit-expanderHeader {
+    background-color: #f8f9fa !important;
+    border-radius: 8px !important;
+    font-weight: 500 !important;
+}
+
+/* スライダー */
+.stSlider > div > div > div > div {
+    background-color: #667eea !important;
+}
+
+/* プログレスバー */
+.stProgress > div > div > div > div {
+    background: linear-gradient(90deg, #667eea 0%, #764ba2 100%) !important;
+}
+
+/* カラムの余白調整 */
+.row-widget.stHorizontal {
+    gap: 1rem;
+}
+
+/* カードスタイル */
+.element-container {
+    transition: all 0.3s ease;
+}
+
+/* Plotlyグラフ - クリーンスタイル */
+.js-plotly-plot {
+    border-radius: 12px !important;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1) !important;
+    overflow: hidden !important;
+    background: #ffffff !important;
+    border: 1px solid #e2e8f0 !important;
+}
+
+.js-plotly-plot .plotly .modebar {
+    background: transparent !important;
+}
+
+/* 空のマテリアルアイコンを非表示 - より強力なルール */
+.main span.material-icons {
+    display: none !important;
+}
+
+.main span.material-icons:not(:empty) {
+    display: none !important;
+}
+
+/* サイドバーの空のマテリアルアイコンも非表示 */
+section[data-testid="stSidebar"] span.material-icons:empty {
+    display: none !important;
+}
+
+/* サイドバーでテキストが入っているアイコンのみ表示 */
+section[data-testid="stSidebar"] span.material-icons:not(:empty) {
+    display: inline !important;
+}
+
+/* テキスト色 */
+p, span, div {
+    color: #2d3748 !important;
+}
+
+/* ラベル */
+label {
+    color: #4a5568 !important;
+    font-weight: 500 !important;
+}
+
+/* スピナー */
+.stSpinner > div {
+    border-top-color: #667eea !important;
+}
+
+/* スクロールバー */
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #764ba2;
+}
+
+/* アニメーション */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.element-container {
+    animation: fadeIn 0.5s ease-out;
+}

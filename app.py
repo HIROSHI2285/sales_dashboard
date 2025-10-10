@@ -39,10 +39,10 @@ st.set_page_config(
     initial_sidebar_state="expanded"
 )
 
-# Material Icons読み込み
-st.markdown("""
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-""", unsafe_allow_html=True)
+# Material Icons読み込み（不要なためコメントアウト）
+# st.markdown("""
+#     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+# """, unsafe_allow_html=True)
 
 # カスタムCSS読み込み
 try:
@@ -66,14 +66,11 @@ if 'page' not in st.session_state:
 # ============================================================================
 
 with st.sidebar:
-    # タイトルとアイコン - デザインサンプル準拠
+    # タイトル
     st.markdown("""
-        <div style="display: flex; align-items: center; margin-bottom: 1.5rem; padding: 0 1rem;">
-            <span class="material-icons" style="font-size: 40px; margin-right: 16px; color: #ECF0F1;">dashboard</span>
-            <div>
-                <div style="font-size: 1rem; font-weight: 400; color: #ECF0F1; line-height: 1.4;">売上分析</div>
-                <div style="font-size: 1rem; font-weight: 400; color: #ECF0F1; line-height: 1.4;">ダッシュボード</div>
-            </div>
+        <div style="margin-bottom: 2rem; padding: 0 1rem;">
+            <div style="font-size: 1.5rem; font-weight: 600; color: #ECF0F1; line-height: 1.3; margin-bottom: 0.3rem;">売上分析</div>
+            <div style="font-size: 1.5rem; font-weight: 600; color: #ECF0F1; line-height: 1.3;">ダッシュボード</div>
         </div>
     """, unsafe_allow_html=True)
     st.markdown("---")
@@ -133,22 +130,18 @@ st.markdown("---")
 # データアップロードページ
 # ----------------------------------------------------------------------------
 if page == "データアップロード":
-    st.markdown("""
-        <div style="display: flex; align-items: center; margin-bottom: 1rem; margin-top: 0.5rem;">
-            <span class="material-icons" style="font-size: 28px; margin-right: 10px; color: #2B3D4F;"></span>
-            <h3 style="margin: 0; color: #2B3D4F; font-weight: 400; font-size: 1.3rem;">CSVファイルのアップロード</h3>
-        </div>
-    """, unsafe_allow_html=True)
-
-    uploaded_files = st.file_uploader(
-        "CSVファイルを選択",
-        type=['csv'],
-        accept_multiple_files=True,
-        help="複数のCSVファイルを選択すると自動で統合されます",
-        key="file_uploader"
-    )
+    st.subheader("CSVファイルのアップロード")
 
     col1, col2 = st.columns(2)
+
+    with col1:
+        uploaded_files = st.file_uploader(
+            "CSVファイルを選択",
+            type=['csv'],
+            accept_multiple_files=True,
+            help="複数のCSVファイルを選択すると自動で統合されます",
+            key="file_uploader"
+        )
 
     with col1:
         if st.button("サンプルデータを読み込む", use_container_width=True, type="primary"):
@@ -163,7 +156,6 @@ if page == "データアップロード":
                         st.session_state.data = df
                         st.session_state.original_data = df.copy()
                         st.session_state.uploaded_files_count = 1
-                        st.success("サンプルデータを読み込みました！")
                         st.rerun()
             except DataValidationError as e:
                 st.error(f"データ検証エラー: {e}")
@@ -194,12 +186,7 @@ if page == "データアップロード":
     # Excelダウンロードボタン
     if st.session_state.data is not None:
         st.markdown("---")
-        st.markdown("""
-            <div style="display: flex; align-items: center; margin-bottom: 1rem; margin-top: 1.5rem;">
-                <span class="material-icons" style="font-size: 28px; margin-right: 10px; color: #2B3D4F;"></span>
-                <h3 style="margin: 0; color: #2B3D4F; font-weight: 400; font-size: 1.3rem;">データのエクスポート</h3>
-            </div>
-        """, unsafe_allow_html=True)
+        st.subheader("データのエクスポート")
 
         col1, col2 = st.columns(2)
         with col1:
@@ -225,12 +212,7 @@ elif page == "ダッシュボード":
         df = st.session_state.data
 
         # KPI表示
-        st.markdown("""
-            <div style="display: flex; align-items: center; margin-bottom: 1.5rem; margin-top: 1rem;">
-                <span class="material-icons" style="font-size: 32px; margin-right: 12px; color: #2B3D4F;"></span>
-                <h3 style="margin: 0; color: #2B3D4F; font-weight: 400; font-size: 1.5rem;">主要業績指標（KPI）</h3>
-            </div>
-        """, unsafe_allow_html=True)
+        st.subheader("主要業績指標（KPI）")
         kpi1, kpi2, kpi3, kpi4 = st.columns(4)
 
         with kpi1:
@@ -252,12 +234,7 @@ elif page == "ダッシュボード":
         st.markdown("---")
 
         # グラフ表示
-        st.markdown("""
-            <div style="display: flex; align-items: center; margin-bottom: 1.5rem; margin-top: 1.5rem;">
-                <span class="material-icons" style="font-size: 32px; margin-right: 12px; color: #2B3D4F;"></span>
-                <h3 style="margin: 0; color: #2B3D4F; font-weight: 400; font-size: 1.5rem;">売上推移</h3>
-            </div>
-        """, unsafe_allow_html=True)
+        st.subheader("売上推移")
         try:
             fig_trend = plot_sales_trend(df, period='monthly')
             st.plotly_chart(fig_trend, use_container_width=True)
@@ -269,12 +246,7 @@ elif page == "ダッシュボード":
         # 顧客分析と地域別売上を横並び
         col1, col2 = st.columns(2)
         with col1:
-            st.markdown("""
-                <div style="display: flex; align-items: center; margin-bottom: 1rem; margin-top: 1.5rem;">
-                    <span class="material-icons" style="font-size: 28px; margin-right: 10px; color: #2B3D4F;"></span>
-                    <h3 style="margin: 0; color: #2B3D4F; font-weight: 400; font-size: 1.3rem;">顧客分析</h3>
-                </div>
-            """, unsafe_allow_html=True)
+            st.subheader("顧客分析")
             try:
                 fig_customer = plot_customer_analysis(df)
                 st.plotly_chart(fig_customer, use_container_width=True)
@@ -282,12 +254,7 @@ elif page == "ダッシュボード":
                 st.error(f"{e}")
 
         with col2:
-            st.markdown("""
-                <div style="display: flex; align-items: center; margin-bottom: 1rem; margin-top: 1.5rem;">
-                    <span class="material-icons" style="font-size: 28px; margin-right: 10px; color: #2B3D4F;"></span>
-                    <h3 style="margin: 0; color: #2B3D4F; font-weight: 400; font-size: 1.3rem;">地域別売上</h3>
-                </div>
-            """, unsafe_allow_html=True)
+            st.subheader("地域別売上")
             try:
                 fig_region = plot_regional_sales(df)
                 st.plotly_chart(fig_region, use_container_width=True)
@@ -297,12 +264,7 @@ elif page == "ダッシュボード":
         st.markdown("---")
 
         # 売上上位商品を横長表示
-        st.markdown("""
-            <div style="display: flex; align-items: center; margin-bottom: 1rem; margin-top: 1.5rem;">
-                <span class="material-icons" style="font-size: 28px; margin-right: 10px; color: #2B3D4F;"></span>
-                <h3 style="margin: 0; color: #2B3D4F; font-weight: 400; font-size: 1.3rem;">売上上位商品</h3>
-            </div>
-        """, unsafe_allow_html=True)
+        st.subheader("売上上位商品")
         try:
             fig_product = plot_product_ranking(df, top_n=10)
             st.plotly_chart(fig_product, use_container_width=True)
@@ -312,12 +274,7 @@ elif page == "ダッシュボード":
         st.markdown("---")
 
         # 前年同期比較を横長表示
-        st.markdown("""
-            <div style="display: flex; align-items: center; margin-bottom: 1rem; margin-top: 1.5rem;">
-                <span class="material-icons" style="font-size: 28px; margin-right: 10px; color: #2B3D4F;"></span>
-                <h3 style="margin: 0; color: #2B3D4F; font-weight: 400; font-size: 1.3rem;">前年同期比較</h3>
-            </div>
-        """, unsafe_allow_html=True)
+        st.subheader("前年同期比較")
         try:
             fig_yoy = plot_yoy_comparison(df)
             st.plotly_chart(fig_yoy, use_container_width=True)
@@ -331,12 +288,7 @@ elif page == "売上予測":
     if st.session_state.data is None:
         st.info("まずデータをアップロードしてください")
     else:
-        st.markdown("""
-            <div style="display: flex; align-items: center; margin-bottom: 1rem; margin-top: 0.5rem;">
-                <span class="material-icons" style="font-size: 28px; margin-right: 10px; color: #2B3D4F;"></span>
-                <h3 style="margin: 0; color: #2B3D4F; font-weight: 400; font-size: 1.3rem;">予測設定</h3>
-            </div>
-        """, unsafe_allow_html=True)
+        st.subheader("予測設定")
 
         col1, col2 = st.columns(2)
         with col1:
@@ -376,12 +328,7 @@ elif page == "売上予測":
             results = st.session_state.prediction_results
             metrics = results['metrics']
 
-            st.markdown("""
-                <div style="display: flex; align-items: center; margin-bottom: 1rem; margin-top: 1.5rem;">
-                    <span class="material-icons" style="font-size: 28px; margin-right: 10px; color: #2B3D4F;"></span>
-                    <h3 style="margin: 0; color: #2B3D4F; font-weight: 400; font-size: 1.3rem;">予測精度</h3>
-                </div>
-            """, unsafe_allow_html=True)
+            st.subheader("予測精度")
             col1, col2, col3 = st.columns(3)
             with col1:
                 st.metric("RMSE（二乗平均平方根誤差）", f"${metrics['RMSE']:,.0f}")
@@ -390,12 +337,7 @@ elif page == "売上予測":
             with col3:
                 st.metric("R²スコア", f"{metrics['R2_Score']:.3f}")
 
-            st.markdown("""
-                <div style="display: flex; align-items: center; margin-bottom: 1rem; margin-top: 1.5rem;">
-                    <span class="material-icons" style="font-size: 28px; margin-right: 10px; color: #2B3D4F;"></span>
-                    <h3 style="margin: 0; color: #2B3D4F; font-weight: 400; font-size: 1.3rem;">予測グラフ</h3>
-                </div>
-            """, unsafe_allow_html=True)
+            st.subheader("予測グラフ")
             daily_df = results['daily_df']
             future_df = results['future_df']
 
@@ -419,12 +361,7 @@ elif page == "レポート生成":
     if st.session_state.data is None:
         st.info("先にデータをアップロードしてください")
     else:
-        st.markdown("""
-            <div style="display: flex; align-items: center; margin-bottom: 1rem; margin-top: 0.5rem;">
-                <span class="material-icons" style="font-size: 28px; margin-right: 10px; color: #2B3D4F;"></span>
-                <h3 style="margin: 0; color: #2B3D4F; font-weight: 400; font-size: 1.3rem;">レポート設定</h3>
-            </div>
-        """, unsafe_allow_html=True)
+        st.subheader("レポート設定")
 
         col1, col2 = st.columns(2)
         with col1:
@@ -443,13 +380,28 @@ elif page == "レポート生成":
                             'total_orders': df['Order ID'].nunique() if 'Order ID' in df.columns else len(df)
                         }
 
-                        # グラフ生成
+                        # グラフ生成（個別に生成して配列に追加）
                         from src.visualizer import plot_sales_trend, plot_product_ranking, plot_regional_sales
 
+                        # 月次売上推移
+                        st.info("月次売上推移グラフを生成中...")
+                        fig_sales_trend = plot_sales_trend(df, period='monthly')
+                        st.success(f"月次売上推移グラフ生成完了: {fig_sales_trend.layout.title.text}")
+
+                        # 売上上位商品
+                        st.info("売上上位商品グラフを生成中...")
+                        fig_product_ranking = plot_product_ranking(df, top_n=10)
+                        st.success(f"売上上位商品グラフ生成完了: {fig_product_ranking.layout.title.text}")
+
+                        # 地域別売上構成
+                        st.info("地域別売上構成グラフを生成中...")
+                        fig_regional_sales = plot_regional_sales(df)
+                        st.success(f"地域別売上構成グラフ生成完了: {fig_regional_sales.layout.title.text}")
+
                         charts = [
-                            (plot_sales_trend(df, period='monthly'), "月次売上推移"),
-                            (plot_product_ranking(df, top_n=10), "売上上位商品"),
-                            (plot_regional_sales(df), "地域別売上構成")
+                            (fig_sales_trend, "月次売上推移"),
+                            (fig_product_ranking, "売上上位商品"),
+                            (fig_regional_sales, "地域別売上構成")
                         ]
 
                         # テーブルデータ
@@ -513,12 +465,7 @@ elif page == "データ確認":
     else:
         df = st.session_state.data
 
-        st.markdown("""
-            <div style="display: flex; align-items: center; margin-bottom: 1rem; margin-top: 0.5rem;">
-                <span class="material-icons" style="font-size: 28px; margin-right: 10px; color: #2B3D4F;"></span>
-                <h3 style="margin: 0; color: #2B3D4F; font-weight: 400; font-size: 1.3rem;">データ概要</h3>
-            </div>
-        """, unsafe_allow_html=True)
+        st.subheader("データ概要")
         col1, col2, col3, col4 = st.columns(4)
         with col1:
             st.metric("総行数", f"{len(df):,}")
@@ -534,20 +481,10 @@ elif page == "データ確認":
 
         st.markdown("---")
 
-        st.markdown("""
-            <div style="display: flex; align-items: center; margin-bottom: 1rem; margin-top: 1.5rem;">
-                <span class="material-icons" style="font-size: 28px; margin-right: 10px; color: #2B3D4F;">table_view</span>
-                <h3 style="margin: 0; color: #2B3D4F; font-weight: 400; font-size: 1.3rem;">データプレビュー</h3>
-            </div>
-        """, unsafe_allow_html=True)
+        st.subheader("データプレビュー")
         st.dataframe(df.head(20), use_container_width=True)
 
         st.markdown("---")
 
-        st.markdown("""
-            <div style="display: flex; align-items: center; margin-bottom: 1rem; margin-top: 1.5rem;">
-                <span class="material-icons" style="font-size: 28px; margin-right: 10px; color: #2B3D4F;"></span>
-                <h3 style="margin: 0; color: #2B3D4F; font-weight: 400; font-size: 1.3rem;">統計情報</h3>
-            </div>
-        """, unsafe_allow_html=True)
+        st.subheader("統計情報")
         st.dataframe(df.describe(), use_container_width=True)
