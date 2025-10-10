@@ -297,12 +297,10 @@ SOFTWARE.
 
 ---
 
-## 🤝 貢献
-
-プルリクエストを歓迎します！大きな変更の場合は、まずissueを開いて変更内容を議論してください。
 
 ---
 
 ## 📧 お問い合わせ
 
 バグ報告や機能リクエストは [Issues](https://github.com/your-repo/sales_dashboard/issues) にお願いします。
+
